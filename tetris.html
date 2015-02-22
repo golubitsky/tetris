@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="tetris.css">
+</head>
+<body>
+
+  <h1>Tetris</h1>
+
+  <div id="board"></div>
+
+  <script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="board-model.js"></script>
+  <script type="text/javascript" src="board-view.js"></script>
+  <script type="text/javascript" src="tetromino.js"></script>
+  <script type="text/javascript" src="game.js"></script>
+  <script type="text/javascript" src="board-controller.js"></script>
+
+  <script type="text/javascript">
+    var tetris = new Tetris.Game();
+    tetris.play();
+  </script>
+</body>
+</html>
