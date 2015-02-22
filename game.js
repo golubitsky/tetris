@@ -20,7 +20,7 @@
     }, 20);
 
     setInterval(function () {
-      that.board.descendTetromino();
+      that.board.moveTetromino('down');
     }, 700);
   };
 })();

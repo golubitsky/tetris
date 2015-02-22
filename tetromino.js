@@ -10,8 +10,7 @@
   };
 
   Tetromino.prototype.generateShape = function () {
-    // var r = Math.round(Math.random() * 6)
-    var r = 6;
+    var r = Math.round(Math.random() * 6)
     switch (r) {
       case 0: //S
       this.pos = [ [1, 4], [1, 5], [0, 5], [0, 6] ];
@@ -64,18 +63,14 @@
     });
   }
 
-  Tetromino.prototype.descend = function () {
-    var that = this;
-    var changed = [];
-    var pos = this.pos;
-    for (var i = 0; i < pos.length; i++) {
-      debugger
-      if (changed.indexOf(pos[i]) !== -1) { continue }
-      changed.push(pos[i]);
+  Tetromino.prototype.move = function (newPosition) {
+    for (var i = 0; i < this.pos.length; i++) {
+      that.board.set(this.pos[i], false);
+    }
+    this.pos = newPosition;
 
-      that.board.set(pos[i], false);
-      pos[i][0] += 1;
-      that.board.set(pos[i], that.color);
+    for (var i = 0; i < this.pos.length; i++) {
+      that.board.set(this.pos[i], this.color);
     }
   }
 
@@ -85,25 +80,24 @@
   Tetromino.prototype.right = function () {
   }
 
-  Tetromino.prototype.spaceEmpty = function (direction) {
-    var that = this;
+  Tetromino.prototype.potentialPos = function (direction) {
+    var potentialPos = [];
     this.pos.forEach(function (pos) {
       switch (direction) {
         case 'down':
-        if (that.board.get([ pos[0] + 1, pos[1] ])) {
-          console.log('ok');
-          return false
-        }
+        potentialPos.push([ pos[0] + 1, pos[1] ])
         break;
+
         case 'left':
-
+        potentialPos.push([ pos[0], pos[1] - 1 ])
         break;
+
         case 'right':
-
+        potentialPos.push([ pos[0], pos[1] + 1 ])
         break;
-      };
+      }
     });
-    return true;
+    return potentialPos;
   }
 
   Tetromino.prototype.place = function () {

@@ -16,7 +16,7 @@
       e.preventDefault();
       switch(e.which) {
         case 37: // left
-        that.board.currentTetromino.left();
+        that.board.moveTetromino('left');
         console.log('l')
         break;
 
@@ -25,12 +25,13 @@
         break;
 
         case 39: // right
-        that.board.currentTetromino.right();
+        that.board.moveTetromino('right')
         console.log('r')
         break;
 
         case 40: // down
         console.log('d')
+        that.board.moveTetromino('down');
         break;
 
         default: return; // exit this handler for other keys

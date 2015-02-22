@@ -33,18 +33,52 @@
 
   Board.prototype.generateTetromino = function () {
     this.currentTetromino = new Tetris.Tetromino(this);
-  };
+  }
 
-  Board.prototype.spaceEmpty = function (tetromino, direction) {
-    return tetromino.spaceEmpty(direction)
-  };
+  // Board.prototype.spaceEmpty = function (direction) {
+  //   return this.currentTetromino.spaceEmpty(direction)
+  // }
 
-  Board.prototype.descendTetromino = function () {
-    if (this.spaceEmpty(this.currentTetromino, 'down')) {
-      this.currentTetromino.descend();
+  Board.prototype.moveTetromino = function (direction) {
+    var newPosition = this.checkMove(direction);
+    if (newPosition) {
+      this.currentTetromino.move(newPosition);
     }
-  };
+  }
+
+  Board.prototype.checkMove = function (direction) {
+    //returns either false (illegal move) or new position of tetromino
+
+    var potentialPos = this.currentTetromino.potentialPos(direction);
+    var currentPos = this.currentTetromino.pos;
+
+    for (var i = 0; i < potentialPos.length; i++) {
+      //potential is out of bounds => illegal
+      if (!this.inBounds(potentialPos[i])) { return false }
+      //potential is occupied by current block => legal
+      if (this.contains(currentPos, potentialPos[i])) { continue }
+      //board contains a tetromino at potentialPos => illegal
+      if (this.get(potentialPos[i])) { return false }
+    }
+
+    return potentialPos;
+  }
+
+  Board.prototype.inBounds = function (pos) {
+    if (pos[0] < 0 || pos[0] >= Y_DIM) { return false }
+    if (pos[1] < 0 || pos[1] >= X_DIM) { return false }
+
+    return true;
+  }
+
+  Board.prototype.contains = function (currentPos, potential) {
+    for (var i = 0; i < currentPos.length; i++) {
+      if (currentPos[i][0] === potential[0] && currentPos[i][1] === potential[1]) { return true }
+    }
+    return false;
+  }
 
   Board.prototype.destroyTetromino = function () {
   };
+
 })();
