@@ -11,8 +11,8 @@
   };
 
   Tetromino.prototype.generateShape = function () {
-    var r = Math.round(Math.random() * 6)
-    // var r = 4;
+    // var r = Math.round(Math.random() * 6)
+    var r = 4;
     switch (r) {
       case 0: //S
       this.pos = [ [1, 4], [1, 5], [0, 5], [0, 6] ];
@@ -156,8 +156,8 @@
           newPos[3] = [ this.pos[3][0]    , this.pos[3][1] + 2 ]
         } else if (this.rotation === 3) {
           newPos[0] = [ this.pos[0][0] - 1, this.pos[0][1] - 1 ]
-          newPos[2] = [ this.pos[1][0]    , this.pos[1][1]     ]
-          newPos[1] = [ this.pos[2][0] + 1, this.pos[2][1] + 1 ]
+          newPos[1] = [ this.pos[1][0]    , this.pos[1][1]     ]
+          newPos[2] = [ this.pos[2][0] + 1, this.pos[2][1] + 1 ]
           newPos[3] = [ this.pos[3][0] + 2, this.pos[3][1]     ]
         }
       break;
