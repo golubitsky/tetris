@@ -7,6 +7,8 @@
     this.board = new Tetris.Board();
     this.view = new Tetris.BoardView();
     this.controller = new Tetris.Controller(this.board);
+    this.counter = 0
+    this.fps = 60;
   };
 
   Game.prototype.play = function() {
@@ -17,11 +19,12 @@
 
     setInterval(function () {
       that.view.render(grid);
-    }, 20);
+      that.counter += 1;
+      if (that.counter % 10 === 0) {
+        that.board.moveTetromino('down');
+      }
 
-    setInterval(function () {
-      that.board.moveTetromino('down');
-      that.view.render(grid);
-    }, 700);
+    }, 1000/this.fps);
+
   };
 })();

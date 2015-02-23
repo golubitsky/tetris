@@ -17,20 +17,21 @@
       switch(e.which) {
         case 37: // left
         that.board.moveTetromino('left');
-        console.log('l')
+        console.log('left')
         break;
 
         case 38: // up\
-        console.log('u')
+        console.log('rotate')
+        that.board.moveTetromino('rotate');
         break;
 
         case 39: // right
         that.board.moveTetromino('right')
-        console.log('r')
+        console.log('right')
         break;
 
         case 40: // down
-        console.log('d')
+        console.log('down')
         that.board.moveTetromino('down');
         break;
 

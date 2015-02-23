@@ -35,14 +35,18 @@
     this.currentTetromino = new Tetris.Tetromino(this);
   }
 
-  // Board.prototype.spaceEmpty = function (direction) {
-  //   return this.currentTetromino.spaceEmpty(direction)
-  // }
-
   Board.prototype.moveTetromino = function (direction) {
     var newPosition = this.checkMove(direction);
     if (newPosition) {
       this.currentTetromino.move(newPosition);
+    }
+
+    if (direction === 'rotate') {
+      //keep track of rotation to know how to next rotate
+      this.currentTetromino.rotation += 1;
+      if (this.currentTetromino.rotation === 4) {
+        this.currentTetromino.rotation = 0
+      }
     }
 
     this.checkToRegenerate();
@@ -63,7 +67,6 @@
       }
     }
   }
-
 
   Board.prototype.checkMove = function (direction) {
     //returns either false (illegal move) or new position of tetromino
