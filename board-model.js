@@ -44,7 +44,26 @@
     if (newPosition) {
       this.currentTetromino.move(newPosition);
     }
+
+    this.checkToRegenerate();
   }
+
+  Board.prototype.checkToRegenerate = function () {
+    nextDownPosition = this.currentTetromino.potentialPos('down');
+    for (var i = 0; i < nextDownPosition.length; i++) {
+      if (!this.inBounds(nextDownPosition[i])) {
+        this.generateTetromino();
+        break;
+      }
+
+      if (this.get(nextDownPosition[i]) &&
+        !this.currentTetrominoOccupies(this.currentTetromino.pos, nextDownPosition[i])) {
+        this.generateTetromino();
+        break;
+      }
+    }
+  }
+
 
   Board.prototype.checkMove = function (direction) {
     //returns either false (illegal move) or new position of tetromino
@@ -55,8 +74,8 @@
     for (var i = 0; i < potentialPos.length; i++) {
       //potential is out of bounds => illegal
       if (!this.inBounds(potentialPos[i])) { return false }
-      //potential is occupied by current block => legal
-      if (this.contains(currentPos, potentialPos[i])) { continue }
+      //potential is occupied by current tetromino => legal
+      if (this.currentTetrominoOccupies(currentPos, potentialPos[i])) { continue }
       //board contains a tetromino at potentialPos => illegal
       if (this.get(potentialPos[i])) { return false }
     }
@@ -71,7 +90,7 @@
     return true;
   }
 
-  Board.prototype.contains = function (currentPos, potential) {
+  Board.prototype.currentTetrominoOccupies = function (currentPos, potential) {
     for (var i = 0; i < currentPos.length; i++) {
       if (currentPos[i][0] === potential[0] && currentPos[i][1] === potential[1]) { return true }
     }

@@ -74,12 +74,6 @@
     }
   }
 
-  Tetromino.prototype.left = function () {
-  }
-
-  Tetromino.prototype.right = function () {
-  }
-
   Tetromino.prototype.potentialPos = function (direction) {
     var potentialPos = [];
     this.pos.forEach(function (pos) {
@@ -100,6 +94,9 @@
     return potentialPos;
   }
 
-  Tetromino.prototype.place = function () {
+  Tetromino.prototype.rotateLeft = function () {
+  }
+
+  Tetromino.prototype.rotateRight = function () {
   }
 })();

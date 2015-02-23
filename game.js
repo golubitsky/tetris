@@ -21,6 +21,7 @@
 
     setInterval(function () {
       that.board.moveTetromino('down');
+      that.view.render(grid);
     }, 700);
   };
 })();
