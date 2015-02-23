@@ -11,53 +11,53 @@
   };
 
   Tetromino.prototype.generateShape = function () {
-    // var r = Math.round(Math.random() * 6)
-    var r = 4;
+    var r = Math.round(Math.random() * 6)
+    var r = 5;
     switch (r) {
       case 0: //S
-      this.pos = [ [1, 4], [1, 5], [0, 5], [0, 6] ];
+      this.pos = [ [2, 4], [2, 5], [10, 5], [1, 6] ];
       this.color = 'DarkGreen';
       this.shape = "S";
       console.log('S')
       break;
 
       case 1: //Z
-      this.pos = [ [0, 4], [0, 5], [1, 5], [1, 6] ];
+      this.pos = [ [1, 4], [1, 5], [2, 5], [2, 6] ];
       this.color = 'DarkCyan';
       this.shape = "Z";
       console.log('Z')
       break;
 
       case 2: //T
-      this.pos = [ [0, 4], [0, 5], [0, 6], [1, 5] ];
+      this.pos = [ [1, 4], [1, 5], [1, 6], [2, 5] ];
       this.color = '#AA5500';
       this.shape = "T";
       console.log('T')
       break;
 
       case 3: //L
-      this.pos = [ [1, 4], [0, 4], [0, 5], [0, 6] ];
+      this.pos = [ [2, 4], [1, 4], [1, 5], [1, 6] ];
       this.color = 'DarkMagenta';
       this.shape = "L";
       console.log('L')
       break;
 
       case 4: //J
-      this.pos = [ [0, 4], [0, 5], [0, 6], [1, 6] ];
+      this.pos = [ [1, 4], [1, 5], [1, 6], [2, 6] ];
       this.color = 'LightGray';
       this.shape = "J";
       console.log('J')
       break;
 
       case 5: //l
-      this.pos = [ [0, 3], [0, 4], [0, 5], [0, 6] ];
+      this.pos = [ [1, 3], [1, 4], [1, 5], [1, 6] ];
       this.color = 'DarkRed';
       this.shape = "l";
       console.log('l')
       break;
 
       case 6: //O
-      this.pos = [ [0, 4], [0, 5], [1, 4], [1, 5] ];
+      this.pos = [ [1, 4], [1, 5], [2, 4], [2, 5] ];
       this.color = 'DarkBlue';
       this.shape = "O";
       console.log('O')
@@ -207,17 +207,17 @@
           newPos[3] = [ this.pos[3][0] + 1, this.pos[3][1] + 1 ]
         }
       break;
-      case "l": //TO DO: this also has a problem sometimes
+      case "l":
         if (this.rotation === 0 || this.rotation === 2) {
-          newPos[0] = [ this.pos[0][0] + 1, this.pos[0][1] - 1 ]
-          newPos[1] = [ this.pos[1][0]    , this.pos[1][1]     ]
-          newPos[2] = [ this.pos[2][0] - 1, this.pos[2][1] + 1 ]
-          newPos[3] = [ this.pos[3][0] - 2, this.pos[3][1] + 2 ]
-        } else {
           newPos[0] = [ this.pos[0][0] - 1, this.pos[0][1] + 1 ]
           newPos[1] = [ this.pos[1][0]    , this.pos[1][1]     ]
           newPos[2] = [ this.pos[2][0] + 1, this.pos[2][1] - 1 ]
           newPos[3] = [ this.pos[3][0] + 2, this.pos[3][1] - 2 ]
+        } else {
+          newPos[0] = [ this.pos[0][0] + 1, this.pos[0][1] - 1 ]
+          newPos[1] = [ this.pos[1][0]    , this.pos[1][1]     ]
+          newPos[2] = [ this.pos[2][0] - 1, this.pos[2][1] + 1 ]
+          newPos[3] = [ this.pos[3][0] - 2, this.pos[3][1] + 2 ]
         }
       break;
       case "O":

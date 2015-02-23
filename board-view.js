@@ -8,7 +8,7 @@
   };
 
   BoardView.prototype.build = function () {
-    for(var y = 0; y < 15; y++) {
+    for(var y = 1; y <= 15; y++) {
       for(var x = 0; x < 10; x++) {
         var $square = $('<div>');
         $square.attr('x', x);
@@ -19,7 +19,8 @@
   }
 
   BoardView.prototype.render = function (grid) {
-    for(var y = 0; y < 15; y++) {
+    //do not render the top-most line; it exists for rotation on top of board
+    for(var y = 1; y <= 15; y++) {
       for(var x = 0; x < 10; x++) {
         var $square = $('[x='+x+'][y='+y+']')
 

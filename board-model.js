@@ -3,8 +3,8 @@
     window.Tetris = {};
   }
 
-  X_DIM = 10;
-  Y_DIM = 15;
+  X_DIM = 10; //non-inclusive (affects inBounds function)
+  Y_DIM = 15; //inclusive
 
   var Board = Tetris.Board = function () {
     this.grid = [];
@@ -14,7 +14,7 @@
 
   Board.prototype.buildGrid = function () {
   grid = this.grid;
-    for (var i = 0; i < Y_DIM; i++) {
+    for (var i = 0; i <= Y_DIM; i++) {
       grid[i] = [];
       for (var j = 0; j < X_DIM; j++) {
         grid[i].push(false);
@@ -87,7 +87,7 @@
   }
 
   Board.prototype.inBounds = function (pos) {
-    if (pos[0] < 0 || pos[0] >= Y_DIM) { return false }
+    if (pos[0] < 0 || pos[0] > Y_DIM) { return false }
     if (pos[1] < 0 || pos[1] >= X_DIM) { return false }
 
     return true;
