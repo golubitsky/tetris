@@ -12,10 +12,10 @@
 
   Tetromino.prototype.generateShape = function () {
     var r = Math.round(Math.random() * 6)
-    var r = 5;
+    // var r = 0;
     switch (r) {
       case 0: //S
-      this.pos = [ [2, 4], [2, 5], [10, 5], [1, 6] ];
+      this.pos = [ [2, 4], [2, 5], [1, 5], [1, 6] ];
       this.color = 'DarkGreen';
       this.shape = "S";
       console.log('S')

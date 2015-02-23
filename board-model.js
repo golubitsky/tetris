@@ -50,6 +50,7 @@
     }
 
     this.checkToRegenerate();
+    this.checkRows();
   }
 
   Board.prototype.checkToRegenerate = function () {
@@ -100,7 +101,7 @@
     return false;
   }
 
-  Board.prototype.destroyTetromino = function () {
-  };
+  Board.prototype.checkRows = function () {
+  }
 
 })();
