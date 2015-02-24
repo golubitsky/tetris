@@ -50,6 +50,4 @@
   Stats.prototype.scoreSpeedPoints = function () {
     this.score += (5 * (this.level + 1));
   }
-
-  S
 })();
