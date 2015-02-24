@@ -45,33 +45,33 @@
     var newPosition = this.checkMove(direction);
     if (newPosition) {
       this.currentTetromino.move(newPosition);
-    }
 
-    if (direction === 'rotate') {
-      //keep track of rotation to know how to next rotate
-      this.currentTetromino.rotation += 1;
-      if (this.currentTetromino.rotation === 4) {
-        this.currentTetromino.rotation = 0
+      if (direction === 'rotate') {
+        //keep track of rotation to know how to next rotate
+        this.currentTetromino.rotation += 1;
+        if (this.currentTetromino.rotation === 4) {
+          this.currentTetromino.rotation = 0
+        }
       }
     }
 
-    this.checkToRegenerate();
   }
 
   Board.prototype.checkToRegenerate = function () {
     nextDownPosition = this.currentTetromino.potentialPos('down');
     for (var i = 0; i < nextDownPosition.length; i++) {
       if (!this.inBounds(nextDownPosition[i])) {
-        this.generateTetromino();
+        return true;
         break;
       }
 
       if (this.get(nextDownPosition[i]) &&
         !this.currentTetrominoOccupies(this.currentTetromino.pos, nextDownPosition[i])) {
-        this.generateTetromino();
+        return true;
         break;
       }
     }
+    return false;
   }
 
   Board.prototype.checkMove = function (direction) {

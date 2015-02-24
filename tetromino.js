@@ -12,7 +12,7 @@
 
   Tetromino.prototype.generateShape = function () {
     var r = Math.round(Math.random() * 6)
-    // var r = 0;
+    // var r = 2;
     switch (r) {
       case 0: //S
       this.pos = [ [2, 4], [2, 5], [1, 5], [1, 6] ];
@@ -74,12 +74,12 @@
 
   Tetromino.prototype.move = function (newPosition) {
     for (var i = 0; i < this.pos.length; i++) {
-      that.board.set(this.pos[i], false);
+      this.board.set(this.pos[i], false);
     }
     this.pos = newPosition;
 
     for (var i = 0; i < this.pos.length; i++) {
-      that.board.set(this.pos[i], this.color);
+      this.board.set(this.pos[i], this.color);
     }
   }
 
