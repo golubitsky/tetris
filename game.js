@@ -4,8 +4,9 @@
   }
 
   var Game = Tetris.Game = function () {
-    this.board = new Tetris.Board();
-    this.view = new Tetris.BoardView();
+    this.stats = new Tetris.Stats();
+    this.board = new Tetris.Board(this.stats);
+    this.view = new Tetris.BoardView(this.stats);
     this.controller = new Tetris.Controller(this.board);
     this.fps = 60;
   };
@@ -24,13 +25,11 @@
       counter += 1;
 
       if (counter - graceCounter === 7 && gracePeriod) {
-        // if (that.board.checkMove('down')) {
           graceCounter = 0;
           gracePeriod = false;
           if (!that.board.checkMove('down')) {
             that.board.generateTetromino();
           }
-        // }
       }
 
       if (counter % 10 === 0) {
@@ -43,4 +42,8 @@
     }, 1000/this.fps);
 
   };
+
+  Game.prototype.speed = function () {
+    this.stats.level
+  }
 })();

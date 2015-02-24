@@ -26,3 +26,39 @@ span, article, footer, time, small {
   width: 40px;
   height: 40px;
 }
+
+#stats {
+  clear: both;
+  position: relative;
+  background: black;
+  width: 400px;
+  height: 35px;
+  padding: 3px;
+  border: 2px solid #221F1F;
+  border-top: 1px solid #221F1F;
+}
+
+#stats > span {
+  background: black;
+  color: yellow;
+  font-size: 24px;
+  position: absolute;
+}
+
+#stats > span > span {
+  position: relative;
+  left: 5px;
+}
+
+#score {
+  left: 6px;
+}
+
+#lines {
+  left: 150px;
+}
+
+#level {
+  left: 300px;
+
+}

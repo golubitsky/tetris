@@ -32,7 +32,8 @@
 
         case 40: // down
         console.log('down')
-        that.board.moveTetromino('down');
+        //pass true as second argument to score points for descending faster
+        that.board.moveTetromino('down', true);
         break;
 
         default: return; // exit this handler for other keys

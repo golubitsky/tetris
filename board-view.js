@@ -3,7 +3,8 @@
     window.Tetris = {};
   }
 
-  var BoardView = Tetris.BoardView = function () {
+  var BoardView = Tetris.BoardView = function (stats) {
+    this.stats = stats;
     this.build();
   };
 
@@ -30,5 +31,9 @@
         $square.css('background-color', color)
       }
     }
+
+    $('#score > span').html(this.stats.score);
+    $('#lines > span').html(this.stats.lines);
+    $('#level > span').html(this.stats.level);
   }
 })();

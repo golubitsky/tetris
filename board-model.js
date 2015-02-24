@@ -6,7 +6,8 @@
   X_DIM = 10; //non-inclusive (affects inBounds function)
   Y_DIM = 15; //inclusive
 
-  var Board = Tetris.Board = function () {
+  var Board = Tetris.Board = function (stats) {
+    this.stats = stats;
     this.grid = [];
     this.buildGrid();
     this.generateTetromino();
@@ -41,7 +42,7 @@
     this.currentTetromino = new Tetris.Tetromino(this);
   }
 
-  Board.prototype.moveTetromino = function (direction) {
+  Board.prototype.moveTetromino = function (direction, score) {
     var newPosition = this.checkMove(direction);
     if (newPosition) {
       this.currentTetromino.move(newPosition);
@@ -52,6 +53,10 @@
         if (this.currentTetromino.rotation === 4) {
           this.currentTetromino.rotation = 0
         }
+      }
+
+      if (score) {
+        this.stats.scoreSpeedPoints();
       }
     }
 
@@ -134,7 +139,7 @@
       this.shiftRowsDown(y); //TO DO later optimize this step to happen once (in case of multiple rows disappearing at the same time)
     }
 
-    //TO DO points logic
+    this.stats.handleLineScoring(rows.length);
   }
 
   Board.prototype.disappearRow = function (y) {
