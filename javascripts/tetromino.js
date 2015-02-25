@@ -11,58 +11,42 @@
   };
 
   Tetromino.prototype.generateShape = function () {
-    var r = Math.round(Math.random() * 6)
+    //TO DO: refactor!!
+    //refactor next shape
+    //refactor storage of all defaults
+
+    SHAPE_DEFAULTS = [
+      [ [2, 4], [2, 5], [1, 5], [1, 6] ],
+      [ [1, 4], [1, 5], [2, 5], [2, 6] ],
+      [ [1, 4], [1, 5], [1, 6], [2, 5] ],
+      [ [2, 4], [1, 4], [1, 5], [1, 6] ],
+      [ [1, 4], [1, 5], [1, 6], [2, 6] ],
+      [ [1, 3], [1, 4], [1, 5], [1, 6] ],
+      [ [1, 4], [1, 5], [2, 4], [2, 5] ]
+      ]
+
+    COLOR_DEFAULTS = [
+      'DarkGreen',
+      'DarkCyan',
+      '#AA5500',
+      'DarkMagenta',
+      'LightGray',
+      'DarkRed',
+      'DarkBlue'
+    ]
+
+    SHAPE_NAMES = ["S", "Z", "T", "L", "J", "l", "O"]
+
+    var random = this.board.next || Math.round(Math.random() * 6);
+    this.board.next = Math.round(Math.random() * 6);
+    this.board.nextColor = COLOR_DEFAULTS[this.board.next];
+    this.board.nextShape = SHAPE_DEFAULTS[this.board.next];
+
     // var r = 2;
-    switch (r) {
-      case 0: //S
-      this.pos = [ [2, 4], [2, 5], [1, 5], [1, 6] ];
-      this.color = 'DarkGreen';
-      this.shape = "S";
-      console.log('S')
-      break;
 
-      case 1: //Z
-      this.pos = [ [1, 4], [1, 5], [2, 5], [2, 6] ];
-      this.color = 'DarkCyan';
-      this.shape = "Z";
-      console.log('Z')
-      break;
-
-      case 2: //T
-      this.pos = [ [1, 4], [1, 5], [1, 6], [2, 5] ];
-      this.color = '#AA5500';
-      this.shape = "T";
-      console.log('T')
-      break;
-
-      case 3: //L
-      this.pos = [ [2, 4], [1, 4], [1, 5], [1, 6] ];
-      this.color = 'DarkMagenta';
-      this.shape = "L";
-      console.log('L')
-      break;
-
-      case 4: //J
-      this.pos = [ [1, 4], [1, 5], [1, 6], [2, 6] ];
-      this.color = 'LightGray';
-      this.shape = "J";
-      console.log('J')
-      break;
-
-      case 5: //l
-      this.pos = [ [1, 3], [1, 4], [1, 5], [1, 6] ];
-      this.color = 'DarkRed';
-      this.shape = "l";
-      console.log('l')
-      break;
-
-      case 6: //O
-      this.pos = [ [1, 4], [1, 5], [2, 4], [2, 5] ];
-      this.color = 'DarkBlue';
-      this.shape = "O";
-      console.log('O')
-      break;
-    };
+    this.pos = SHAPE_DEFAULTS[random];
+    this.color = COLOR_DEFAULTS[random];
+    this.shape = SHAPE_NAMES[random];
   };
 
   Tetromino.prototype.colorize = function () {

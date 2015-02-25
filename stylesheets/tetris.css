@@ -16,26 +16,62 @@ span, article, footer, time, small {
   background: transparent;
 }
 
+html {
+  background: black;
+}
+
+body {
+  background: white;
+}
+
+#content {
+  margin: auto;
+  height: 600px;
+  width: 800px;
+  background: fuchsia;
+  position: relative;
+  left:
+}
+
+#main-display {
+  margin: 0 auto;
+  width: 400px;
+  background: black;
+  display: inline-block;
+  float: left;
+}
+
+#side-display {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  background: cyan;
+  float: left;
+  position: relative;
+}
+
 #board {
+  margin: 0 auto;
   width: 400px;
 }
-#board div {
+#board div, #next-tetromino div {
   float: left;
-  border: 1px solid #221F1F;
+  border: 1px solid grey;
   background: black;
   width: 40px;
   height: 40px;
 }
 
 #stats {
+  margin: 0 auto;
   clear: both;
   position: relative;
   background: black;
   width: 400px;
   height: 35px;
   padding: 3px;
-  border: 2px solid #221F1F;
-  border-top: 1px solid #221F1F;
+  border: 2px solid grey;
+  border-top: 1px solid grey;
 }
 
 #stats > span {
@@ -60,5 +96,11 @@ span, article, footer, time, small {
 
 #level {
   left: 300px;
+}
 
+#next-tetromino {
+  float: right;
+  height: 80px;
+  width: 160px;
+  background: yellow;
 }
