@@ -28,7 +28,7 @@ body {
   margin: auto;
   height: 600px;
   width: 800px;
-  background: fuchsia;
+  background: black;
   position: relative;
   left:
 }
@@ -44,8 +44,8 @@ body {
 #side-display {
   display: inline-block;
   width: 200px;
-  height: 100px;
-  background: cyan;
+  height: 600px;
+  background: black;
   float: left;
   position: relative;
 }
@@ -54,7 +54,7 @@ body {
   margin: 0 auto;
   width: 400px;
 }
-#board div, #next-tetromino div {
+#board div {
   float: left;
   border: 1px solid grey;
   background: black;
@@ -62,23 +62,54 @@ body {
   height: 40px;
 }
 
-#stats {
-  margin: 0 auto;
-  clear: both;
-  position: relative;
-  background: black;
-  width: 400px;
-  height: 35px;
-  padding: 3px;
-  border: 2px solid grey;
-  border-top: 1px solid grey;
+/*highscore table*/
+#high-scores {
+  height: 350px;
+  width: 200px;
+  margin: 0px auto;
+  padding: 20px;
+  background: red;
+  display: block;
+  color: white;
 }
 
-#stats > span {
+#high-scores > span {
+  display: block
+}
+
+/*next block*/
+
+#next-tetromino {
+  height: 120px;
+  width: 200px;
+  margin: 0px auto;
+  padding: 20px;
+  background: black;
+  display: block;
+}
+
+/*stats*/
+
+#stats {
+  margin: 0 auto;
+    position: absolute;
+  bottom: 0px;
+  background: green;
+  width: 200px;
+  height: 105px;
+  padding: 3px;
+  bottom: 0px;
+  /*border: 2px solid grey;*/
+  /*border-top: 1px solid grey;*/
+}
+
+#stats > span, #next {
+  width: 100%;
   background: black;
   color: yellow;
   font-size: 24px;
-  position: absolute;
+  display: block;
+  /*position: absolute;*/
 }
 
 #stats > span > span {
@@ -97,10 +128,13 @@ body {
 #level {
   left: 300px;
 }
-
-#next-tetromino {
-  float: right;
-  height: 80px;
+#next-tetromino.small{
   width: 160px;
-  background: yellow;
+  }
+
+#next-tetromino div {
+  float: left;
+  background: black;
+  width: 40px;
+  height: 40px;
 }

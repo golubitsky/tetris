@@ -8,10 +8,13 @@
     this.board = new Tetris.Board(this.stats);
     this.view = new Tetris.BoardView(this.stats);
     this.controller = new Tetris.Controller(this.board);
+    this.api = new Tetris.Api();
     this.fps = 60;
   };
 
   Game.prototype.play = function(level) {
+    this.api.getLeaderboard();
+
     var counter = 0;
     var graceCounter = 0;
     var gracePeriod;
@@ -61,5 +64,13 @@
   Game.prototype.speed = function () {
     var levelModifier = (this.stats.level + 1) * 1.5;
     return 1000/(this.fps + levelModifier);
+  }
+
+  Game.prototype.gameOver = function () {
+    if (this.board.lost()) {
+      //display game over
+      //enter name for high score
+      //post score, default user= "anonymous"
+    }
   }
 })();
