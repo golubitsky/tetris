@@ -12,7 +12,9 @@
     this.fps = 60;
   };
 
-  Game.prototype.play = function(level) {
+  Game.prototype.play = function(speed) {
+    if (speed === undefined) { var speed = 10 }
+
     this.api.getLeaderboard();
 
     var counter = 0;
@@ -31,8 +33,7 @@
 
       that.view.render(that.board);
       counter += 1;
-
-      if (counter - graceCounter === 7 && gracePeriod) {
+      if (counter - graceCounter === 4 && gracePeriod) {
           graceCounter = 0;
           gracePeriod = false
           //check if grace-period rotation has allowed further descent
@@ -44,26 +45,29 @@
               that.restartPlayLoop().bind(that);
             }
           }
-      }
-
-      if (counter % 10 === 0) {
-        that.board.moveTetromino('down');
-        if (that.board.checkToRegenerate()) {
-          gracePeriod = true;
-          graceCounter = counter;
+      } else {
+        if (counter % speed === 0 && !gracePeriod) {
+          that.board.moveTetromino('down');
+          if (that.board.checkToRegenerate()) {
+            gracePeriod = true;
+            graceCounter = counter;
+            console.log(counter)
+            }
+          }
         }
-      }
     }, 1000/this.fps);
 
   };
 
   Game.prototype.restartPlayLoop = function () {
-    this.play();
+    speed = this.speedModulo();
+    this.play(speed);
   }
 
-  Game.prototype.speed = function () {
-    var levelModifier = (this.stats.level + 1) * 1.5;
-    return 1000/(this.fps + levelModifier);
+  Game.prototype.speedModulo = function () {
+    var speedModulo = 10 - this.stats.level;
+    if (speedModulo > 0) { return speedModulo }
+    return 1;
   }
 
   Game.prototype.gameOver = function () {

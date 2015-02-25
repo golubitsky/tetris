@@ -6,6 +6,7 @@
   var Tetromino = Tetris.Tetromino = function (board) {
     this.board = board;
     this.generateShape();
+
     this.colorize();
     this.rotation = 0;
   };

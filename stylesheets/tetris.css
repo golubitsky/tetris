@@ -53,10 +53,12 @@ body {
 #board {
   margin: 0 auto;
   width: 400px;
+  height: 600px;
 }
 #board div {
   float: left;
-  border: 1px solid grey;
+  /*border: 1px solid grey;*/
+
   background: black;
   width: 40px;
   height: 40px;
@@ -74,7 +76,19 @@ body {
 }
 
 #high-scores > span {
+  height: 20px;
+  position: relative;
   display: block
+}
+
+#high-scores span.name {
+  position: absolute;
+  left: 0;
+}
+
+#high-scores span.score {
+  position: absolute;
+  right: 0;
 }
 
 /*next block*/

@@ -29,7 +29,9 @@
       var $name = $('<span>');
       var $score = $('<span>');
       $name.html(entry.username);
+      $name.addClass('name');
       $score.html(entry.score);
+      $score.addClass('score');
       $entry.append($name);
       $entry.append($score);
       $highScores.append($entry);
