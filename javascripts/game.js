@@ -103,7 +103,8 @@
 
     this.api.postStats(event)
     this.view.renderNewForm(true);
-    this.board.buildGrid();
+
+    this.board.initializeGrid();
     $('#new-game').one('submit', this.beginGame.bind(this));
   }
 

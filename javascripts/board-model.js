@@ -9,11 +9,11 @@
   var Board = Tetris.Board = function (stats) {
     this.stats = stats;
     this.grid = [];
-    this.buildGrid();
+    this.initializeGrid();
     this.generateTetromino();
   };
 
-  Board.prototype.buildGrid = function () {
+  Board.prototype.initializeGrid = function () {
   grid = this.grid;
     for (var i = 0; i <= Y_DIM; i++) {
       grid[i] = [];
