@@ -5,7 +5,6 @@
 
   var Stats = Tetris.Stats = function () {
     this.score = 0;
-    this.level = 0;
     this.lines = 0;
   };
 
@@ -48,6 +47,6 @@
   }
 
   Stats.prototype.scoreSpeedPoints = function () {
-    this.score += (5 * (this.level + 1));
+    this.score += this.level;
   }
 })();

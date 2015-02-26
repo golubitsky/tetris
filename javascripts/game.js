@@ -4,10 +4,13 @@
   }
 
   var Game = Tetris.Game = function () {
+    var that = this;
     this.stats = new Tetris.Stats();
     this.board = new Tetris.Board(this.stats);
     this.view = new Tetris.BoardView(this.stats);
+
     this.view.renderNewForm();
+
     this.controller = new Tetris.Controller(this.board);
     this.api = new Tetris.Api();
     this.fps = 60;
@@ -16,7 +19,12 @@
   Game.prototype.beginGame = function (event) {
     event.preventDefault();
 
-    var level = $(event.target).serializeJSON().level
+    var level = parseInt($(event.target).serializeJSON().level)
+
+    this.stats.level = level;
+    this.stats.startLevel = level;
+
+    this.controller.bindEvents();
 
     this.view.buildBoard();
     this.play(level);
@@ -48,11 +56,15 @@
           gracePeriod = false
           //check if grace-period rotation has allowed further descent
           if (!that.board.checkMove('down')) {
+            if (that.board.lost()) {
+              that.gameOver();
+            }
+
             that.board.generateTetromino();
 
             //change speed to reflect current level
             if (currentLevel !== that.stats.level) {
-              that.restartPlayLoop().bind(that);
+              that.restartPlayLoop();
             }
           }
       } else {
@@ -61,13 +73,12 @@
           if (that.board.checkToRegenerate()) {
             gracePeriod = true;
             graceCounter = counter;
-            console.log(counter)
             }
           }
         }
     }, 1000/this.fps);
 
-  };
+  }
 
   Game.prototype.restartPlayLoop = function () {
     this.play(this.stats.level);
@@ -80,10 +91,18 @@
   }
 
   Game.prototype.gameOver = function () {
-    if (this.board.lost()) {
-      //display game over
-      //enter name for high score
-      //post score, default user= "anonymous"
-    }
+    clearInterval(this.currentLoop);
+
+    this.controller.clearEvents();
+    this.view.renderPostForm();
+    $('#post-stats').one('submit', this.endGame.bind(this));
   }
+
+  Game.prototype.endGame = function (event) {
+    event.preventDefault();
+    debugger
+    this.api.postStats(event)
+    this.view.renderNewForm(true);
+  }
+
 })();

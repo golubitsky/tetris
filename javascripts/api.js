@@ -38,15 +38,14 @@
     });
   }
 
-  Api.prototype.postStats = function () {
+  Api.prototype.postStats = function (event) {
+    var params = $(event.target).serializeJSON()
+    debugger
     $.ajax({
      url: 'https://tetris-api.herokuapp.com/api/games',
      type: 'POST',
      crossDomain: true,
-     data: {
-      'game[username]': 'barnes',
-      'game[score]': '3434'
-     },
+     data: params,
 
      success: function(data) {
       debugger

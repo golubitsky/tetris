@@ -6,8 +6,6 @@
   var Controller = Tetris.Controller = function (board) {
     this.board = board;
     this.grid = board.grid;
-
-    this.bindEvents();
   }
 
   Controller.prototype.bindEvents = function () {
@@ -39,6 +37,10 @@
         default: return; // exit this handler for other keys
       }
     });
+  }
+
+  Controller.prototype.clearEvents = function () {
+    $(document).off('keydown')
   }
 
 })();

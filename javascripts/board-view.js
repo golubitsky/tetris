@@ -7,12 +7,28 @@
     this.stats = stats;
   };
 
-  BoardView.prototype.renderNewForm = function () {
+  BoardView.prototype.renderNewForm = function (playAgain) {
+    //TO DO logic to display play again
+
     var templateCode = $("#new_game_form").html();
     var templateFn = _.template(templateCode);
     var renderedContent = templateFn();
 
     $('#main-display').html(renderedContent);
+  }
+
+  BoardView.prototype.renderPostForm = function () {
+    var templateCode = $("#post_game_form").html();
+    var templateFn = _.template(templateCode);
+    var renderedContent = templateFn({
+      startLevel: this.stats.startLevel,
+      endLevel: this.stats.endLevel,
+      lines: this.stats.lines,
+      score: this.stats.score
+    });
+
+    $('#main-display').html(renderedContent);
+
   }
 
   BoardView.prototype.buildBoard = function () {

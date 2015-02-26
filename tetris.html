@@ -40,21 +40,26 @@
     <script type="text/template" id="new_game_form">
       <form id="new-game">
         <label for="level">Starting level</label>
-        <input type="number" id="level" name="level" min="0" max="9">
+        <input type="number" id="level" name="level" value="5" min="0" max="9">
 
         <button type="submit">Play Tetris!</input>
       </form>
     </script>
 
     <script type="text/template" id="post_game_form">
-      <form id="submit-stats">
+      <h2>Game over!</h2>
+      <form id="post-stats">
         <label for="username">Your name</label>
-        <input type="text" placeholder="(optional)" id="username" name="username">
+        <input type="text"
+              placeholder="optional"
+              maxlength="15"
+              id="username"
+              name="game[username]">
 
-        <input type="hidden" name="lines" value="<%= lines %>">
-        <input type="hidden" name="score" value="<%= score %>">
-        <input type="hidden" name="start_level" value="<%= startLevel %>">
-        <input type="hidden" name="end_level" value="<%= endLevel %>">
+        <input type="hidden" name="game[lines]" value="<%= lines %>">
+        <input type="hidden" name="game[score]" value="<%= score %>">
+        <input type="hidden" name="game[start_level]" value="<%= startLevel %>">
+        <input type="hidden" name="game[end_level]" value="<%= endLevel %>">
         <button type="submit">Post score!</input>
       </form>
     </script>
@@ -72,7 +77,7 @@
 
     <script type="text/javascript">
       var tetris = new Tetris.Game();
-      $('#main-display form').on('submit', tetris.beginGame.bind(tetris));
+      $('#new-game').on('submit', tetris.beginGame.bind(tetris));
     </script>
   </body>
 </html>
