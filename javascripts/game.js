@@ -10,9 +10,11 @@
     this.view = new Tetris.BoardView(this.stats);
 
     this.view.renderNewForm();
-
     this.controller = new Tetris.Controller(this.board);
+
     this.api = new Tetris.Api();
+    this.api.getLeaderboard();
+
     this.fps = 60;
   };
 
@@ -32,8 +34,6 @@
 
   Game.prototype.play = function(level) {
     var speed = this.speedModulo(level);
-
-    this.api.getLeaderboard();
 
     var counter = 0;
     var graceCounter = 0;

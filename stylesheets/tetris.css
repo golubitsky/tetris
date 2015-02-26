@@ -17,33 +17,51 @@ span, article, footer, time, small {
 }
 
 html {
-  background: black;
+  background: grey;
 }
 
 body {
-  background: white;
+  background: grey;
 }
 
 #content {
   margin: auto;
   height: 600px;
-  width: 800px;
+  width: 605px;
   background: black;
   position: relative;
+  border: 2px solid grey;
+  border-radius: 10px;
 }
 
 #main-display {
   margin: 0 auto;
-  width: 400px;
+  width: 66.6666%;
+  height: 100%;
   background: black;
   display: inline-block;
   float: left;
+  border: 1px solid yellow;
 }
+
+#side-display {
+  display: inline-block;
+  width: 33.3334%;
+  height: 100%;
+  border: 1px solid yellow;
+  background: black;
+  float: left;
+  position: relative;
+}
+
 /*new game form*/
 
 #main-display form {
   display: block;
   background: green;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #main-display form * {
@@ -51,13 +69,26 @@ body {
   margin: auto;
 }
 
-#side-display {
-  display: inline-block;
-  width: 200px;
-  height: 600px;
-  background: black;
-  float: left;
-  position: relative;
+#main-display form label {
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+#main-display form input {
+  display: block;
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+#main-display form button.play-tetris {
+  display: block;
+  text-align: center;
+  font-size: 50px;
+  padding: 0 8px;
+  border: 3px solid red;
+  border-radius: 15px;
 }
 
 /*game*/
@@ -67,7 +98,7 @@ body {
   width: 400px;
   height: 600px;
 }
-#board div {
+#board > div {
   float: left;
   /*border: 1px solid grey;*/
 
@@ -79,7 +110,7 @@ body {
 /*highscore table*/
 #high-scores {
   height: 350px;
-  width: 200px;
+  width: 100%;
   margin: 0px auto;
   padding: 20px;
   background: red;
@@ -107,29 +138,58 @@ body {
 
 #next-tetromino {
   height: 120px;
-  width: 200px;
+  width: 100%;
   margin: 0px auto;
   padding: 20px;
   background: black;
   display: block;
 }
 
+#next-tetromino div {
+  float: left;
+  background: black;
+}
+
+#next-tetromino > div {
+  width: 25%;
+  height: 50%;
+}
+
+#next-tetromino.small{
+  width: 80%;
+  }
+
+#next-tetromino.small > div {
+  width: 33.3333%;
+  height: 50%;
+}
+
+#next {
+  text-align: center;
+  width: 100%;
+  background: black;
+  color: yellow;
+  font-size: 24px;
+  display: block;
+  clear: both;
+  position: relative;
+  top: -14px;
+}
+
 /*stats*/
 
 #stats {
   margin: 0 auto;
-    position: absolute;
+  position: absolute;
   bottom: 0px;
   background: green;
-  width: 200px;
+  width: 100%;
   height: 105px;
   padding: 3px;
   bottom: 0px;
-  /*border: 2px solid grey;*/
-  /*border-top: 1px solid grey;*/
 }
 
-#stats > span, #next {
+#stats > span {
   width: 100%;
   background: black;
   color: yellow;
@@ -153,14 +213,4 @@ body {
 
 #level {
   left: 300px;
-}
-#next-tetromino.small{
-  width: 160px;
-  }
-
-#next-tetromino div {
-  float: left;
-  background: black;
-  width: 40px;
-  height: 40px;
 }
