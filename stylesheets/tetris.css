@@ -30,7 +30,6 @@ body {
   width: 800px;
   background: black;
   position: relative;
-  left:
 }
 
 #main-display {
@@ -39,6 +38,17 @@ body {
   background: black;
   display: inline-block;
   float: left;
+}
+/*new game form*/
+
+#main-display form {
+  display: block;
+  background: green;
+}
+
+#main-display form * {
+  color: white;
+  margin: auto;
 }
 
 #side-display {
@@ -49,6 +59,8 @@ body {
   float: left;
   position: relative;
 }
+
+/*game*/
 
 #board {
   margin: 0 auto;

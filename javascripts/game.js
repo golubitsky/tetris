@@ -7,13 +7,23 @@
     this.stats = new Tetris.Stats();
     this.board = new Tetris.Board(this.stats);
     this.view = new Tetris.BoardView(this.stats);
+    this.view.renderNewForm();
     this.controller = new Tetris.Controller(this.board);
     this.api = new Tetris.Api();
     this.fps = 60;
   };
 
-  Game.prototype.play = function(speed) {
-    if (speed === undefined) { var speed = 10 }
+  Game.prototype.beginGame = function (event) {
+    event.preventDefault();
+
+    var level = $(event.target).serializeJSON().level
+
+    this.view.buildBoard();
+    this.play(level);
+  }
+
+  Game.prototype.play = function(level) {
+    var speed = this.speedModulo(level);
 
     this.api.getLeaderboard();
 
@@ -60,12 +70,11 @@
   };
 
   Game.prototype.restartPlayLoop = function () {
-    speed = this.speedModulo();
-    this.play(speed);
+    this.play(this.stats.level);
   }
 
-  Game.prototype.speedModulo = function () {
-    var speedModulo = 10 - this.stats.level;
+  Game.prototype.speedModulo = function (level) {
+    var speedModulo = 10 - level;
     if (speedModulo > 0) { return speedModulo }
     return 1;
   }

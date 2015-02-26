@@ -9,9 +9,7 @@
 
     <div id="content">
       <div id="main-display">
-        <div id="board"></div>
-
-      </div> <!--main display -->
+      </div>
       <div id="side-display">
         <div id="high-scores"></div>
         <div id="next-tetromino">
@@ -39,7 +37,31 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="javascripts/jquery-2.1.3.min.js"></script>
+    <script type="text/template" id="new_game_form">
+      <form id="new-game">
+        <label for="level">Starting level</label>
+        <input type="number" id="level" name="level" min="0" max="9">
+
+        <button type="submit">Play Tetris!</input>
+      </form>
+    </script>
+
+    <script type="text/template" id="post_game_form">
+      <form id="submit-stats">
+        <label for="username">Your name</label>
+        <input type="text" placeholder="(optional)" id="username" name="username">
+
+        <input type="hidden" name="lines" value="<%= lines %>">
+        <input type="hidden" name="score" value="<%= score %>">
+        <input type="hidden" name="start_level" value="<%= startLevel %>">
+        <input type="hidden" name="end_level" value="<%= endLevel %>">
+        <button type="submit">Post score!</input>
+      </form>
+    </script>
+
+    <script type="text/javascript" src="javascripts/vendor/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="javascripts/vendor/jquery.serializejson.min.js"></script>
+    <script type="text/javascript" src="javascripts/vendor/underscore-min.js"></script>
     <script type="text/javascript" src="javascripts/board-model.js"></script>
     <script type="text/javascript" src="javascripts/board-view.js"></script>
     <script type="text/javascript" src="javascripts/tetromino.js"></script>
@@ -50,7 +72,7 @@
 
     <script type="text/javascript">
       var tetris = new Tetris.Game();
-      tetris.play();
+      $('#main-display form').on('submit', tetris.beginGame.bind(tetris));
     </script>
   </body>
 </html>

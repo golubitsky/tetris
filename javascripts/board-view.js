@@ -5,18 +5,31 @@
 
   var BoardView = Tetris.BoardView = function (stats) {
     this.stats = stats;
-    this.build();
   };
 
-  BoardView.prototype.build = function () {
+  BoardView.prototype.renderNewForm = function () {
+    var templateCode = $("#new_game_form").html();
+    var templateFn = _.template(templateCode);
+    var renderedContent = templateFn();
+
+    $('#main-display').html(renderedContent);
+  }
+
+  BoardView.prototype.buildBoard = function () {
+    $('#main-display').empty();
+
+    $board = $('<div>');
+    $board = $('<div>').attr('id', 'board');
     for(var y = 1; y <= 15; y++) {
       for(var x = 0; x < 10; x++) {
         var $square = $('<div>');
         $square.attr('x', x);
         $square.attr('y', y);
-        $('#board').append($square)
+        $board.append($square)
       }
     }
+
+    $('#main-display').append($board);
   }
 
   BoardView.prototype.render = function (board) {
@@ -79,3 +92,4 @@
     }
   }
 })();
+
