@@ -77,7 +77,7 @@
 
     <script type="text/javascript">
       var tetris = new Tetris.Game();
-      $('#new-game').on('submit', tetris.beginGame.bind(tetris));
+      $('#new-game').one('submit', tetris.beginGame.bind(tetris));
     </script>
   </body>
 </html>

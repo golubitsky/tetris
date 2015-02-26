@@ -20,6 +20,22 @@
     });
   }
 
+  Api.prototype.postStats = function (event) {
+    var that = this;
+    var params = $(event.target).serializeJSON();
+
+    $.ajax({
+     url: 'https://tetris-api.herokuapp.com/api/games',
+     type: 'POST',
+     crossDomain: true,
+     data: params,
+
+     success: function(data) {
+      that.parseAndInsert(data);
+     }
+    });
+  }
+
   Api.prototype.parseAndInsert = function (data) {
     var $highScores = $('#high-scores');
     $highScores.empty();
@@ -38,18 +54,4 @@
     });
   }
 
-  Api.prototype.postStats = function (event) {
-    var params = $(event.target).serializeJSON()
-    debugger
-    $.ajax({
-     url: 'https://tetris-api.herokuapp.com/api/games',
-     type: 'POST',
-     crossDomain: true,
-     data: params,
-
-     success: function(data) {
-      debugger
-     }
-    });
-  }
 })();

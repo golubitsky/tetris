@@ -100,9 +100,11 @@
 
   Game.prototype.endGame = function (event) {
     event.preventDefault();
-    debugger
+
     this.api.postStats(event)
     this.view.renderNewForm(true);
+    this.board.buildGrid();
+    $('#new-game').one('submit', this.beginGame.bind(this));
   }
 
 })();
