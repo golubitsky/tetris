@@ -72,9 +72,9 @@
   }
 
   BoardView.prototype.renderStats = function () {
-    $('#score > span').html(this.stats.score);
-    $('#lines > span').html(this.stats.lines);
-    $('#level > span').html(this.stats.level);
+    $('.score > span').html(this.stats.score);
+    $('.lines > span').html(this.stats.lines);
+    $('.level > span').html(this.stats.level);
   }
 
   BoardView.prototype.clearNext = function () {

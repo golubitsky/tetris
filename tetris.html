@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href='http://fonts.googleapis.com/css?family=Karla:700,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/tetris.css">
   </head>
   <body>
@@ -24,13 +25,13 @@
         </div>
         <span id="next">Next tetromino</span>
         <div id="stats">
-          <span id="score">
+          <span class="score">
             Score:<span></span>
           </span>
-          <span id="lines">
+          <span class="lines">
             Lines:<span></span>
           </span>
-          <span id="level">
+          <span class="level">
             Level:<span></span>
           </span>
         </div>
@@ -39,7 +40,7 @@
 
     <script type="text/template" id="new_game_form">
       <form id="new-game">
-        <label for="level">SELECT START LEVEL (0-9)</label>
+        <label for="level">SELECT YOUR START LEVEL (0-9):</label>
         <input type="number" id="level" name="level" value="5" min="0" max="9">
 
         <button class="play-tetris" type="submit">PLAY TETRIS</input>
@@ -49,19 +50,21 @@
     <script type="text/template" id="post_game_form">
       <h2>Game over!</h2>
       <form id="post-stats">
-        <label for="username">Your name</label>
+        <label for="username">JOIN THE HALL OF FAME:</label>
         <input type="text"
-              placeholder="optional"
-              maxlength="15"
+              autofocus
+              placeholder="your name (optional)"
+              maxlength="10"
               id="username"
-              name="game[username]">
+              name="game[username]"
+              autocomplete="off">
 
         <input type="hidden" name="game[lines]" value="<%= lines %>">
         <input type="hidden" name="game[score]" value="<%= score %>">
         <input type="hidden" name="game[start_level]" value="<%= startLevel %>">
         <input type="hidden" name="game[end_level]" value="<%= endLevel %>">
-        <button class="post-score" type="submit">Post score!</input>
-        <button class="play-again">Play again!</input>
+        <button class="post-score" type="submit">POST Score</input>
+        <button class="play-again">PLAY AGAIN!</input>
       </form>
     </script>
 

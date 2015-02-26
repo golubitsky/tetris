@@ -1,13 +1,14 @@
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
-section, img, div, h2, p, form,
+section, img, div, h2, p, form *,
 fieldset, label, input, textarea,
 span, article, footer, time, small {
+
   margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
-  font: inherit;
+  font-family: 'Karla', sans-serif;
   color: inherit;
   text-align: inherit;
   text-decoration: inherit;
@@ -26,8 +27,8 @@ body {
 
 #content {
   margin: auto;
-  height: 600px;
-  width: 605px;
+  height: 605px;
+  width: 606px;
   background: black;
   position: relative;
   border: 2px solid grey;
@@ -56,33 +57,44 @@ body {
 
 /*new game form*/
 
-#main-display form {
+form {
   display: block;
+  margin: auto;
+  width: 90%;
   background: green;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 25%;
+  transform: translateY(-25%);
 }
 
-#main-display form * {
+form * {
   color: white;
   margin: auto;
 }
 
-#main-display form label {
+form {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+form label {
+  text-align: center;
+  display: block;
+  margin: auto;
+  font-size: 18px;
+}
+
+form input {
   display: block;
   text-align: center;
-  margin: auto;
-}
-
-#main-display form input {
-  display: block;
   font-size: 50px;
   height: 50px;
-  width: 50px;
+  width: 55px;
+  height: 100%;
 }
 
-#main-display form button.play-tetris {
+form button {
+  clear: both;
   display: block;
   text-align: center;
   font-size: 50px;
@@ -91,20 +103,25 @@ body {
   border-radius: 15px;
 }
 
+form #username {
+  width: 100%;
+  font-size: 34px;
+}
+
 /*game*/
 
 #board {
   margin: 0 auto;
-  width: 400px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
 }
 #board > div {
   float: left;
   /*border: 1px solid grey;*/
 
   background: black;
-  width: 40px;
-  height: 40px;
+  width: 10%;
+  height: 6.6666%;
 }
 
 /*highscore table*/
@@ -203,14 +220,14 @@ body {
   left: 5px;
 }
 
-#score {
+#stats .score {
   left: 6px;
 }
 
-#lines {
+#stats .lines {
   left: 150px;
 }
 
-#level {
+#stats .level {
   left: 300px;
 }
