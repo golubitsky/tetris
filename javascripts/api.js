@@ -40,6 +40,11 @@
     var $highScores = $('#high-scores');
     $highScores.empty();
 
+    var $header = $('<span>');
+    $header.html('HALL OF FAME');
+    $header.addClass('header');
+    $highScores.append($header);
+
     data.forEach(function (entry) {
       var $entry = $('<span>');
       var $name = $('<span>');

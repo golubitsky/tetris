@@ -6,13 +6,13 @@
   </head>
   <body>
 
-    <h1>Tetris</h1>
 
     <div id="content">
       <div id="main-display">
       </div>
       <div id="side-display">
         <div id="high-scores"></div>
+        <span id="next">NEXT</span>
         <div id="next-tetromino">
           <div y="1" x="3"></div>
           <div y="1" x="4"></div>
@@ -23,32 +23,29 @@
           <div y="2" x="5"></div>
           <div y="2" x="6"></div>
         </div>
-        <span id="next">Next tetromino</span>
         <div id="stats">
-          <span class="score">
-            Score:<span></span>
-          </span>
-          <span class="lines">
-            Lines:<span></span>
-          </span>
-          <span class="level">
-            Level:<span></span>
-          </span>
+          <span class="label">SCORE</span>
+          <span class="score"></span>
+          <span class="label">LINES</span>
+          <span class="lines"></span>
+          <span class="label">LEVEL</span>
+          <span class="level"></span>
         </div>
       </div>
     </div>
+    <h2><a href="https://www.linkedin.com/in/mikegolubitsky">WHO MADE THIS?</a></h2>
 
     <script type="text/template" id="new_game_form">
-      <form id="new-game">
-        <label for="level">SELECT YOUR START LEVEL (0-9):</label>
-        <input type="number" id="level" name="level" value="5" min="0" max="9">
+      <form id="new-game">f
+        <label for="level">START LEVEL (0-9):</label>
+        <input type="number" autofocus id="level" name="level" value="5" min="0" max="9">
 
-        <button class="play-tetris" type="submit">PLAY TETRIS</input>
+        <button class="play-tetris" type="submit">PLAY TETRIS!</input>
       </form>
     </script>
 
     <script type="text/template" id="post_game_form">
-      <h2>Game over!</h2>
+      <h3>GAME OVER!</h3>
       <form id="post-stats">
         <label for="username">JOIN THE HALL OF FAME:</label>
         <input type="text"
@@ -63,7 +60,7 @@
         <input type="hidden" name="game[score]" value="<%= score %>">
         <input type="hidden" name="game[start_level]" value="<%= startLevel %>">
         <input type="hidden" name="game[end_level]" value="<%= endLevel %>">
-        <button class="post-score" type="submit">POST Score</input>
+        <button class="post-score" type="submit">POST SCORE</input>
         <button class="play-again">PLAY AGAIN!</input>
       </form>
     </script>

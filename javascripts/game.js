@@ -30,6 +30,7 @@
 
     this.view.buildBoard();
     this.play(level);
+    this.view.levelChange();
   }
 
   Game.prototype.play = function(level) {
@@ -65,6 +66,7 @@
             //change speed to reflect current level
             if (currentLevel !== that.stats.level) {
               that.restartPlayLoop();
+              that.view.levelChange();
             }
           }
       } else {

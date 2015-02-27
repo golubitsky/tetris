@@ -72,9 +72,9 @@
   }
 
   BoardView.prototype.renderStats = function () {
-    $('.score > span').html(this.stats.score);
-    $('.lines > span').html(this.stats.lines);
-    $('.level > span').html(this.stats.level);
+    $('#stats .score').html(this.stats.score);
+    $('#stats .lines').html(this.stats.lines);
+    $('#stats .level').html(this.stats.level);
   }
 
   BoardView.prototype.clearNext = function () {
@@ -87,9 +87,14 @@
 
   BoardView.prototype.renderNext = function (nextShape, nextColor) {
     //reset hidden divs if necessary
-    $('#next-tetromino').removeClass('small')
+    $('#next-tetromino').removeClass();
+    $('#next-tetromino div').removeClass();
     $('#next-tetromino [x=3][y=1]').show();
     $('#next-tetromino [x=3][y=2]').show();
+    $('#next-tetromino [x=3][y=2]').show();
+    $('#next-tetromino [x=4][y=2]').show();
+    $('#next-tetromino [x=5][y=2]').show();
+    $('#next-tetromino [x=6][y=2]').show();
 
     for (var i = 0; i < nextShape.length; i++) {
       var pos = nextShape[i]
@@ -105,7 +110,19 @@
       $('#next-tetromino').addClass('small')
       $('#next-tetromino [x=3][y=1]').hide();
       $('#next-tetromino [x=3][y=2]').hide();
+    } else if (nextColor === 'DarkRed') {
+      $('#next-tetromino div').addClass('long')
+      $('#next-tetromino [x=3][y=2]').hide();
+      $('#next-tetromino [x=4][y=2]').hide();
+      $('#next-tetromino [x=5][y=2]').hide();
+      $('#next-tetromino [x=6][y=2]').hide();
     }
+  }
+
+  BoardView.prototype.levelChange = function () {
+    var color = '#'+ Math.floor(Math.random()*16777215).toString(16);
+    $('html').css('background', color);
+    $('body').css('background', color);
   }
 })();
 
