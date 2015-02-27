@@ -10,6 +10,7 @@
     this.stats = stats;
     this.grid = [];
     this.initializeGrid();
+    this.next = Math.round(Math.random() * 6);
     this.generateTetromino();
   };
 
@@ -33,12 +34,6 @@
   }
 
   Board.prototype.generateTetromino = function () {
-    var rowsToDisappear = this.checkToDisappearRows(); //TO DO rethink where to actually put this check; perhaps a new ~~"placeTetromino" function?
-
-    if (rowsToDisappear.length) {
-      this.disappearRows(rowsToDisappear)
-    }
-
     this.currentTetromino = new Tetris.Tetromino(this);
   }
 
@@ -111,19 +106,19 @@
     return false;
   }
 
-  Board.prototype.checkToDisappearRows = function () {
-    var rowsToDisappear = [];
+  Board.prototype.checkToClearRows = function () {
+    var rowsToClear = [];
 
     for (var y = 1; y <= Y_DIM; y++) {
-      if (this.checkToDisappearRow(y)) {
-        rowsToDisappear.push(y);
+      if (this.checkToClearRow(y)) {
+        rowsToClear.push(y);
       }
     }
 
-    return rowsToDisappear;
+    return rowsToClear;
   }
 
-  Board.prototype.checkToDisappearRow = function (y) {
+  Board.prototype.checkToClearRow = function (y) {
     for (var x = 0; x < X_DIM; x++) {
       if (!this.get([y,x])) {
         return false;
@@ -132,17 +127,15 @@
     return true;
   }
 
-  Board.prototype.disappearRows = function (rows) {
+  Board.prototype.clearRows = function (rows) {
     for (var i = 0; i < rows.length; i++) {
       var y = rows[i];
-      this.disappearRow(y);
+      this.clearRow(y);
       this.shiftRowsDown(y); //TO DO later optimize this step to happen once (in case of multiple rows disappearing at the same time)
     }
-
-    this.stats.handleLineScoring(rows.length);
   }
 
-  Board.prototype.disappearRow = function (y) {
+  Board.prototype.clearRow = function (y) {
     for (var x = 0; x < X_DIM; x++) {
       this.set([y, x], false)
     }

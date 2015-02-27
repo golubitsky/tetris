@@ -145,7 +145,7 @@ form button {
   border: 3px solid #de4f4f;
   border-radius: 15px;
   position: relative;
-  top: 30%;
+  top: 36%;
   transition: background .09s ease;
 }
 
@@ -179,6 +179,10 @@ form #username {
   background: black;
   width: 10%;
   height: 6.6666%;
+}
+
+#board > div.clearing {
+  transition: background 0.1s;
 }
 
 /*highscore table*/

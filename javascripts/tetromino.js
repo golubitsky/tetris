@@ -17,18 +17,18 @@
     //refactor storage of all defaults
 
     SHAPE_DEFAULTS = [
-      [ [2, 4], [2, 5], [1, 5], [1, 6] ],
-      [ [1, 4], [1, 5], [2, 5], [2, 6] ],
-      [ [1, 4], [1, 5], [1, 6], [2, 5] ],
-      [ [2, 4], [1, 4], [1, 5], [1, 6] ],
-      [ [1, 4], [1, 5], [1, 6], [2, 6] ],
-      [ [1, 3], [1, 4], [1, 5], [1, 6] ],
-      [ [1, 4], [1, 5], [2, 4], [2, 5] ]
+      [ [1, 4], [1, 5], [2, 5], [2, 6] ], //Z
+      [ [2, 4], [2, 5], [1, 5], [1, 6] ], //S
+      [ [1, 4], [1, 5], [1, 6], [2, 5] ], //T
+      [ [2, 4], [1, 4], [1, 5], [1, 6] ], //L
+      [ [1, 4], [1, 5], [1, 6], [2, 6] ], //J
+      [ [1, 3], [1, 4], [1, 5], [1, 6] ], //l
+      [ [1, 4], [1, 5], [2, 4], [2, 5] ]  //O
       ]
 
     COLOR_DEFAULTS = [
-      'DarkGreen',
       'DarkCyan',
+      'DarkGreen',
       '#AA5500',
       'DarkMagenta',
       'LightGray',
@@ -36,18 +36,17 @@
       'DarkBlue'
     ]
 
-    SHAPE_NAMES = ["S", "Z", "T", "L", "J", "l", "O"]
+    SHAPE_NAMES = ["Z", "S", "T", "L", "J", "l", "O"]
 
-    var random = this.board.next || Math.round(Math.random() * 6);
+    this.color = COLOR_DEFAULTS[this.board.next];
+    this.pos = SHAPE_DEFAULTS[this.board.next];
+    this.shape = SHAPE_NAMES[this.board.next];
+
     this.board.next = Math.round(Math.random() * 6);
+
     this.board.nextColor = COLOR_DEFAULTS[this.board.next];
     this.board.nextShape = SHAPE_DEFAULTS[this.board.next];
-
-    // var r = 2;
-
-    this.pos = SHAPE_DEFAULTS[random];
-    this.color = COLOR_DEFAULTS[random];
-    this.shape = SHAPE_NAMES[random];
+    this.board.nextShapeName = SHAPE_NAMES[this.board.next];
   };
 
   Tetromino.prototype.colorize = function () {

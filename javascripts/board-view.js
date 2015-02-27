@@ -120,9 +120,29 @@
   }
 
   BoardView.prototype.levelChange = function () {
-    var color = '#'+ Math.floor(Math.random()*16777215).toString(16);
+    var color = this.randomColor();
     $('html').css('background', color);
     $('body').css('background', color);
+  }
+
+  BoardView.prototype.flashRows = function (rows) {
+    var that = this;
+    for (var i = 0; i < rows.length; i++) {
+      var y = rows[i];
+      $row = $('#board div[y='+y+']');
+      $row.addClass('clearing');
+      $row.css('background', that.randomColor());
+      $row.css('background', that.randomColor());
+      $row.css('background', that.randomColor());
+      $row.css('background', that.randomColor());
+      $row.css('background', that.randomColor());
+      $row.css('background', that.randomColor());
+      $row.removeClass('clearing');
+    }
+  }
+
+  BoardView.prototype.randomColor = function () {
+    return '#'+ Math.floor(Math.random()*16777215).toString(16);
   }
 })();
 
