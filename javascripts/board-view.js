@@ -155,7 +155,6 @@
       var counter = 0;
       $row.addClass('explode1')
       var explode = setInterval(function () {
-        debugger
         counter += 1;
         switch(counter) {
           case 1:

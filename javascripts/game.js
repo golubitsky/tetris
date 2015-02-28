@@ -33,7 +33,7 @@
     this.view.levelChange();
   }
 
-  Game.prototype.play = function(level, doNotClear) {
+  Game.prototype.play = function(level) {
     var speed = this.speedModulo(level);
 
     var counter = 0;
@@ -49,11 +49,12 @@
 
     this.currentLoop = setInterval(function () {
       var currentLevel = that.stats.level;
-
       that.view.render(that.board);
       counter += 1;
+
       if (counter - graceCounter === 4 && gracePeriod) {
           graceCounter = 0;
+          counter = 0;
           gracePeriod = false
           //check if grace-period rotation has allowed further descent
           if (!that.board.checkMove('down')) {
@@ -63,22 +64,20 @@
 
             //do not clear rows because model hasn't been update yet
             // if (!doNotClear) {
-              debugger
               var rowsToClear = that.board.checkToClearRows()
             // }
 
             if (rowsToClear.length) {
               that.view.flashRows(rowsToClear, function () {
-                debugger
                 that.board.clearRows(rowsToClear);
                 that.stats.handleLineScoring(rowsToClear.length);
                 that.restartPlayLoop();
               });
-              debugger
               clearInterval(that.currentLoop);
               return;
             }
             that.board.generateTetromino();
+            that.view.render(that.board);
 
             //change speed to reflect current level
             if (currentLevel !== that.stats.level) {

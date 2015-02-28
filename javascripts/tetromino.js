@@ -5,6 +5,7 @@
 
   var Tetromino = Tetris.Tetromino = function (board) {
     this.board = board;
+    debugger
     this.generateShape();
 
     // this.colorize();
@@ -47,15 +48,15 @@
     this.board.nextColor = COLOR_DEFAULTS[this.board.next];
     this.board.nextShape = SHAPE_DEFAULTS[this.board.next];
     this.board.nextShapeName = SHAPE_NAMES[this.board.next];
+
+    this.colorize();
   };
 
-  // Tetromino.prototype.colorize = function () {
-  //   var that = this;
-  //   this.pos.forEach(function (pos) {
-  //     debugger
-  //     that.board.set(pos, that.shape);
-  //   });
-  // }
+  Tetromino.prototype.colorize = function () {
+    for (var i = 0; i < this.pos.length; i++) {
+      this.board.set(this.pos[i], this.shape);
+    }
+  }
 
   Tetromino.prototype.move = function (newPosition) {
     for (var i = 0; i < this.pos.length; i++) {
@@ -63,9 +64,7 @@
     }
     this.previousPos = this.pos;
     this.pos = newPosition;
-    for (var i = 0; i < this.pos.length; i++) {
-      this.board.set(this.pos[i], this.shape);
-    }
+    this.colorize();
   }
 
   Tetromino.prototype.potentialPos = function (direction) {
