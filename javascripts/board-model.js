@@ -76,6 +76,10 @@
 
   Board.prototype.checkMove = function (direction) {
     //returns either false (illegal move) or new position of tetromino
+    //there is no active piece after row clearing
+    if (this.unableToMove) {
+      return false;
+    }
 
     var potentialPos = this.currentTetromino.potentialPos(direction);
     var currentPos = this.currentTetromino.pos;

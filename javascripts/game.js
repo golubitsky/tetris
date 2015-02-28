@@ -33,7 +33,7 @@
     this.view.levelChange();
   }
 
-  Game.prototype.play = function(level) {
+  Game.prototype.play = function(level, generateTetromino) {
     var speed = this.speedModulo(level);
 
     var counter = 0;
@@ -41,11 +41,16 @@
     var gracePeriod;
     var that = this;
 
-    this.view.render(this.board);
 
     if (this.currentLoop) {
       clearInterval(this.currentLoop);
     }
+
+    if (generateTetromino) {
+      this.board.generateTetromino();
+      this.board.unableToMove = false;
+    }
+    this.view.render(this.board);
 
     this.currentLoop = setInterval(function () {
       var currentLevel = that.stats.level;
@@ -68,10 +73,12 @@
             // }
 
             if (rowsToClear.length) {
+              that.board.unableToMove = true;
+
               that.view.flashRows(rowsToClear, function () {
                 that.board.clearRows(rowsToClear);
                 that.stats.handleLineScoring(rowsToClear.length);
-                that.restartPlayLoop();
+                that.restartPlayLoop(true);
               });
               clearInterval(that.currentLoop);
               return;
@@ -98,8 +105,8 @@
 
   }
 
-  Game.prototype.restartPlayLoop = function () {
-    this.play(this.stats.level);
+  Game.prototype.restartPlayLoop = function (generateTetromino) {
+    this.play(this.stats.level, generateTetromino);
   }
 
   Game.prototype.speedModulo = function (level) {
