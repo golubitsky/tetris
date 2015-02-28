@@ -181,10 +181,53 @@ form #username {
   height: 6.6666%;
 }
 
-#board > div.clearing {
-  transition: background 0.1s;
+#board > div.Z, #next-tetromino > div.Z {
+  background: DarkCyan;
 }
 
+#board > div.S, #next-tetromino > div.S {
+  background: DarkGreen;
+}
+
+#board > div.T, #next-tetromino > div.T {
+  background: #AA5500;
+}
+
+#board > div.L, #next-tetromino > div.L {
+  background: DarkMagenta;
+}
+
+#board > div.J, #next-tetromino > div.J {
+  background: LightGray;
+}
+
+#board > div.l, #next-tetromino > div.l {
+  background: DarkRed;
+}
+
+#board > div.O, #next-tetromino > div.O {
+  background: DarkBlue;
+}
+
+#board > div.empty, #next-tetromino > div.empty {
+  background: black;
+}
+
+#board > div.clearing {
+  transition: background 1s;
+}
+
+#board > div.explode1 {
+  background: #FF0000;
+}
+
+#board > div.explode2 {
+  background: #FFBB00;
+}
+
+#board > div.explode3 {
+  background: #FF00CC;
+}
 /*highscore table*/
 #high-scores {
   height: 252px;

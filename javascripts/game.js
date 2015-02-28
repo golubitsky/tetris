@@ -50,8 +50,6 @@
     this.currentLoop = setInterval(function () {
       var currentLevel = that.stats.level;
 
-
-
       that.view.render(that.board);
       counter += 1;
       if (counter - graceCounter === 4 && gracePeriod) {

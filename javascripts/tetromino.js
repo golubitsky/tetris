@@ -7,7 +7,7 @@
     this.board = board;
     this.generateShape();
 
-    this.colorize();
+    // this.colorize();
     this.rotation = 0;
   };
 
@@ -49,21 +49,22 @@
     this.board.nextShapeName = SHAPE_NAMES[this.board.next];
   };
 
-  Tetromino.prototype.colorize = function () {
-    var that = this;
-    this.pos.forEach(function (pos) {
-      that.board.set(pos, that.color);
-    });
-  }
+  // Tetromino.prototype.colorize = function () {
+  //   var that = this;
+  //   this.pos.forEach(function (pos) {
+  //     debugger
+  //     that.board.set(pos, that.shape);
+  //   });
+  // }
 
   Tetromino.prototype.move = function (newPosition) {
     for (var i = 0; i < this.pos.length; i++) {
       this.board.set(this.pos[i], false);
     }
+    this.previousPos = this.pos;
     this.pos = newPosition;
-
     for (var i = 0; i < this.pos.length; i++) {
-      this.board.set(this.pos[i], this.color);
+      this.board.set(this.pos[i], this.shape);
     }
   }
 

@@ -52,17 +52,37 @@
     var grid = board.grid;
     var nextShape = board.nextShape;
     var nextColor = board.nextColor;
-
+    var previousPos = board.currentTetromino.previousPos || [];
+    var currentPos = board.currentTetromino.pos || [];
+    var currentColor = board.currentTetromino.color || 'black';
     //do not render the top-most line; it exists for rotation on top of board
+    //change this to toggle class
+    //only render moving piece somehow
+    // for (var i = 0; i < previousPos.length; i++){
+    //   var previousY = previousPos[i][0]
+    //   var previousX = previousPos[i][1]
+    //   var currentY = currentPos[i][0]
+    //   var currentX = currentPos[i][1]
+    //   var $previousSquare = $('#board [x='+previousX+'][y='+previousY+']')
+    //   var $currentSquare = $('#board [x='+currentX+'][y='+currentY+']')
+    //   $previousSquare.css('color', 'black');
+    //   $currentSquare.css('color', currentColor);
+    //   debugger
+    // }
+
+    // this re-renders everything
     for(var y = 1; y <= 15; y++) {
       for(var x = 0; x < 10; x++) {
         var $square = $('#board [x='+x+'][y='+y+']')
-        var color = grid[y][x];
-        if (!color) { color = 'black' };
 
-        $square.css('background-color', color)
+        var tetroType = grid[y][x];
+        if (!tetroType) { tetroType = 'empty' };
+
+        $square.removeClass();
+        $square.addClass(tetroType);
       }
     }
+
     //update stats
     this.renderStats();
 
@@ -130,14 +150,13 @@
     for (var i = 0; i < rows.length; i++) {
       var y = rows[i];
       $row = $('#board div[y='+y+']');
+      $row.removeClass();
       $row.addClass('clearing');
-      $row.css('background', that.randomColor());
-      $row.css('background', that.randomColor());
-      $row.css('background', that.randomColor());
-      $row.css('background', that.randomColor());
-      $row.css('background', that.randomColor());
-      $row.css('background', that.randomColor());
-      $row.removeClass('clearing');
+      $row.addClass('explode1');
+      $row.addClass('explode2');
+      $row.addClass('explode3');
+      $row.removeClass();
+      $row.addClass('empty');
     }
   }
 
