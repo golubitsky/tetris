@@ -145,18 +145,32 @@
     $('body').css('background', color);
   }
 
-  BoardView.prototype.flashRows = function (rows) {
+  BoardView.prototype.flashRows = function (rows, callback) {
     var that = this;
     for (var i = 0; i < rows.length; i++) {
       var y = rows[i];
       $row = $('#board div[y='+y+']');
-      $row.removeClass();
       $row.addClass('clearing');
-      $row.addClass('explode1');
-      $row.addClass('explode2');
-      $row.addClass('explode3');
-      $row.removeClass();
-      $row.addClass('empty');
+
+      var counter = 0;
+      $row.addClass('explode1')
+      var explode = setInterval(function () {
+        debugger
+        counter += 1;
+        switch(counter) {
+          case 1:
+            $row.addClass('explode2')
+            break;
+          case 2:
+            $row.addClass('explode3')
+            break;
+          case 3:
+            clearInterval(explode);
+            $row.removeClass();
+            $row.addClass('empty');
+            callback();
+          }
+      }, 75);
     }
   }
 

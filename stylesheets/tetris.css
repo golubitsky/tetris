@@ -214,7 +214,7 @@ form #username {
 }
 
 #board > div.clearing {
-  transition: background 1s;
+  transition: background .1s;
 }
 
 #board > div.explode1 {

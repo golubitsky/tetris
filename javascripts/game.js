@@ -33,7 +33,7 @@
     this.view.levelChange();
   }
 
-  Game.prototype.play = function(level) {
+  Game.prototype.play = function(level, doNotClear) {
     var speed = this.speedModulo(level);
 
     var counter = 0;
@@ -61,11 +61,22 @@
               that.gameOver();
             }
 
-            var rowsToClear = that.board.checkToClearRows()
+            //do not clear rows because model hasn't been update yet
+            // if (!doNotClear) {
+              debugger
+              var rowsToClear = that.board.checkToClearRows()
+            // }
+
             if (rowsToClear.length) {
-              that.view.flashRows(rowsToClear);
-              that.board.clearRows(rowsToClear);
-              that.stats.handleLineScoring(rowsToClear.length);
+              that.view.flashRows(rowsToClear, function () {
+                debugger
+                that.board.clearRows(rowsToClear);
+                that.stats.handleLineScoring(rowsToClear.length);
+                that.restartPlayLoop();
+              });
+              debugger
+              clearInterval(that.currentLoop);
+              return;
             }
             that.board.generateTetromino();
 
