@@ -3,8 +3,8 @@
     window.Tetris = {};
   }
 
-  X_DIM = 10; //non-inclusive (affects inBounds function)
-  Y_DIM = 15; //inclusive
+  X_DIM = 10; //non-inclusive of 10 (affects inBounds function)
+  Y_DIM = 15; //inclusive of 15
 
   var Board = Tetris.Board = function (stats) {
     this.stats = stats;
@@ -76,8 +76,9 @@
 
   Board.prototype.checkMove = function (direction) {
     //returns either false (illegal move) or new position of tetromino
-    //there is no active piece after row clearing
+
     if (this.unableToMove) {
+      //there is no active piece after row clearing
       return false;
     }
 
@@ -135,7 +136,7 @@
     for (var i = 0; i < rows.length; i++) {
       var y = rows[i];
       this.clearRow(y);
-      this.shiftRowsDown(y); //TO DO later optimize this step to happen once (in case of multiple rows disappearing at the same time)
+      this.shiftRowsDown(y);
     }
   }
 

@@ -46,7 +46,7 @@
       clearInterval(this.currentLoop);
     }
 
-    //generate tetromino if having restarted the play loop after clearing lines
+    //generate tetromino if having restarted the play loop after clearing rows
     if (generateTetromino) {
       this.board.generateTetromino();
       this.board.unableToMove = false;
@@ -62,6 +62,7 @@
           graceCounter = 0;
           counter = 0;
           gracePeriod = false
+
           //check if grace-period rotation has allowed further descent
           if (!that.board.checkMove('down')) {
             if (that.board.lost()) {
@@ -78,9 +79,11 @@
                 that.stats.handleLineScoring(rowsToClear.length);
                 that.restartPlayLoop(true);
               });
+              //play loop is restarted to allow asynchronous flashing of rows to be cleared
               clearInterval(that.currentLoop);
               return;
             }
+
             that.board.generateTetromino();
             that.view.render(that.board);
 
