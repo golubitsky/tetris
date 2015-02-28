@@ -150,7 +150,6 @@
   }
 
   Board.prototype.lost = function () {
-    debugger
     for (var x = 0; x < X_DIM; x++) {
       if (this.get([1,x]) !== false) {
         return true;

@@ -5,7 +5,6 @@
 
   var Tetromino = Tetris.Tetromino = function (board) {
     this.board = board;
-    debugger
     this.generateShape();
 
     // this.colorize();

@@ -181,32 +181,76 @@ form #username {
   height: 6.6666%;
 }
 
+
+/*top 20% lighter; bottom/right 10% darker*/
 #board > div.Z, #next-tetromino > div.Z {
   background: DarkCyan;
+  border-width: 3px;
+  border-style: outset;
+  border-top-color: rgb(51, 190, 190);
+  border-left-color: rgb(51, 190, 190);
+  border-bottom-color: rgb(0, 193, 193);
+  border-right-color: rgb(0, 193, 193);
 }
 
 #board > div.S, #next-tetromino > div.S {
   background: DarkGreen;
+  border-width: 3px;
+  border-style: outset;
+  border-top-color: rgb(51, 151, 51);
+  border-left-color: rgb(51, 151, 51);
+  border-bottom-color: rgb(0, 154, 0);
+  border-right-color: rgb(0, 154, 0);
 }
 
 #board > div.T, #next-tetromino > div.T {
   background: #AA5500;
+  border-width: 3px;
+  border-style: outset;
+  border-top-color: rgb(221, 136, 51);
+  border-left-color: rgb(221, 136, 51);
+  border-bottom-color: rgb(224, 139, 0);
+  border-right-color: rgb(224, 139, 0);
 }
 
 #board > div.L, #next-tetromino > div.L {
   background: DarkMagenta;
+  border-width: 3px;
+  border-style: outset;
+  border-top-color: rgb(190, 51, 190);
+  border-left-color: rgb(190, 51, 190);
+  border-bottom-color: rgb(193, 0, 193);
+  border-right-color: rgb(193, 0, 193);
 }
 
 #board > div.J, #next-tetromino > div.J {
   background: LightGray;
+  border-width: 3px;
+  border-style: outset;
+  border-top-color: rgb(240, 240, 240);
+  border-left-color: rgb(240, 240, 240);
+  border-bottom-color: rgb(220, 220, 220);
+  border-right-color: rgb(220, 220, 220);
 }
 
 #board > div.l, #next-tetromino > div.l {
   background: DarkRed;
+  border-width: 3px;
+  border-style: outset;
+  border-top-color: rgb(190, 51, 51);
+  border-left-color: rgb(190, 51, 51);
+  border-bottom-color: rgb(193, 0, 0);
+  border-right-color: rgb(193, 0, 0);
 }
 
 #board > div.O, #next-tetromino > div.O {
   background: DarkBlue;
+  border-width: 3px;
+  border-style: outset;
+  border-top-color: rgb(51, 51, 190);
+  border-left-color: rgb(51, 51, 190);
+  border-bottom-color: rgb(0, 0, 193);
+  border-right-color: rgb(0, 0, 193);
 }
 
 #board > div.empty, #next-tetromino > div.empty {
@@ -222,11 +266,11 @@ form #username {
 }
 
 #board > div.explode2 {
-  background: #FFBB00;
+  background: #CC5500;
 }
 
 #board > div.explode3 {
-  background: #FF00CC;
+  background: #CC00BB;
 }
 /*highscore table*/
 #high-scores {

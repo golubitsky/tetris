@@ -51,6 +51,7 @@
   BoardView.prototype.render = function (board) {
     var grid = board.grid;
     var nextShape = board.nextShape;
+    var nextShapeName = board.nextShapeName;
     var nextColor = board.nextColor;
     var previousPos = board.currentTetromino.previousPos || [];
     var currentPos = board.currentTetromino.pos || [];
@@ -88,7 +89,7 @@
 
     //render next piece
     this.clearNext();
-    this.renderNext(nextShape, nextColor);
+    this.renderNext(nextShape, nextColor, nextShapeName);
   }
 
   BoardView.prototype.renderStats = function () {
@@ -100,12 +101,16 @@
   BoardView.prototype.clearNext = function () {
     for (var y = 1; y <= 2; y++) {
       for (var x = 3; x <= 6; x++) {
-        $('#next-tetromino [x='+x+'][y='+y+']').css('background', 'black')
+        $('#next-tetromino [x='+x+'][y='+y+']').removeClass();
       }
     }
   }
 
-  BoardView.prototype.renderNext = function (nextShape, nextColor) {
+  BoardView.prototype.renderNext = function (nextShape, nextColor, nextShapeName) {
+    this.previous == nextShape;
+    if (this.previous == nextShape) {
+      return;
+    }
     //reset hidden divs if necessary
     $('#next-tetromino').removeClass();
     $('#next-tetromino div').removeClass();
@@ -118,8 +123,7 @@
 
     for (var i = 0; i < nextShape.length; i++) {
       var pos = nextShape[i]
-
-      $('#next-tetromino [x='+pos[1]+'][y='+pos[0]+']').css('background', nextColor)
+      $('#next-tetromino [x='+pos[1]+'][y='+pos[0]+']').addClass(nextShapeName);
     }
 
     this.adjustCentering(nextColor);
