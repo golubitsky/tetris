@@ -173,7 +173,7 @@
             $row.addClass('empty');
             callback();
           }
-      }, 75);
+      }, 60);
     }
   }
 
