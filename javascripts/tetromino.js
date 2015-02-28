@@ -209,10 +209,4 @@
     }
     return newPos;
   }
-
-  Tetromino.prototype.rotateLeft = function () {
-  }
-
-  Tetromino.prototype.rotateRight = function () {
-  }
 })();

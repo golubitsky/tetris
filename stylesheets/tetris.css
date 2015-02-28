@@ -52,6 +52,42 @@ h3 {
   margin: 60px;
 }
 
+/*controls explanation*/
+
+div.controls-explanation {
+  color: DarkGrey;
+  font-size: 14px;
+}
+
+dl.controls-explanation {
+  margin: auto;
+  height: 5em;
+  width: 310px;
+}
+
+h4.controls-explanation {
+  margin: 66px auto 10px auto;
+  font-size: 16px;
+  text-align: center;
+}
+
+dl.controls-explanation > dt {
+  width: 260px;
+  float: left;
+  clear: both;
+  text-align: left;
+}
+
+dl.controls-explanation > dd {
+  float: left;
+  width: 50px;
+  margin: 0px;
+  text-align: center;
+  display: inline;
+}
+
+/*main*/
+
 #content {
   margin: auto;
   margin-top: 20px;
@@ -90,7 +126,6 @@ form {
   margin: auto;
   width: 90%;
   height: 50%;
-  background: black;
 }
 
 form#new-game {

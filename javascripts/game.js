@@ -46,6 +46,7 @@
       clearInterval(this.currentLoop);
     }
 
+    //generate tetromino if having restarted the play loop after clearing lines
     if (generateTetromino) {
       this.board.generateTetromino();
       this.board.unableToMove = false;
@@ -67,10 +68,7 @@
               that.gameOver();
             }
 
-            //do not clear rows because model hasn't been update yet
-            // if (!doNotClear) {
-              var rowsToClear = that.board.checkToClearRows()
-            // }
+            var rowsToClear = that.board.checkToClearRows()
 
             if (rowsToClear.length) {
               that.board.unableToMove = true;
