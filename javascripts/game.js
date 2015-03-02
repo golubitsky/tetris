@@ -125,12 +125,12 @@
     var that = this;
 
     $('#post-stats').one('submit', function (event) {
-       that.endGame(event, true).bind(that);
+       that.endGame(event, true);
     });
 
     $('#post-stats button.play-again').off('click'); //turn previous handler off
     $('#post-stats button.play-again').one('click', function (event) {
-       that.endGame(event, false).bind(that);
+       that.endGame(event, false);
     });
   }
 
