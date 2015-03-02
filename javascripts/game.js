@@ -121,13 +121,26 @@
 
     this.controller.clearEvents();
     this.view.renderPostForm();
-    $('#post-stats').one('submit', this.endGame.bind(this));
+
+    var that = this;
+
+    $('#post-stats').one('submit', function (event) {
+       that.endGame(event, true).bind(that);
+    });
+
+    $('#post-stats button.play-again').off('click'); //turn previous handler off
+    $('#post-stats button.play-again').one('click', function (event) {
+       that.endGame(event, false).bind(that);
+    });
   }
 
-  Game.prototype.endGame = function (event) {
+  Game.prototype.endGame = function (event, postStats) {
     event.preventDefault();
 
-    this.api.postStats(event)
+    if (postStats) {
+      this.api.postStats(event);
+    }
+
     this.view.renderNewForm(true);
 
     this.board.initializeGrid();
