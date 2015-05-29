@@ -1,4 +1,4 @@
-(function () {
+  (function () {
   if (typeof Tetris === "undefined") {
     window.Tetris = {};
   }
